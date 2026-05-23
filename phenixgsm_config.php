@@ -1,6 +1,8 @@
 <?php
 if (!defined("WHMCS")) die("Direct access forbidden");
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 define("PHENIXGSM_API_BASE_URL", "https://api.phenix-partner.fr");
 define("PHENIXGSM_TOKEN_CACHE_TTL", 3600);
 define("PHENIXGSM_CACHE_TABLE", "mod_phenixgsm_tokens");
@@ -12,7 +14,7 @@ define("PHENIXGSM_SIM_TYPES", serialize(["SIM"=>"SIM Standard","ESIM"=>"eSIM","S
 
 function phenixgsm_initCacheTable() {
     if (!Capsule::schema()->hasTable(PHENIXGSM_CACHE_TABLE)) {
-        Capsule::schema()->createTable(PHENIXGSM_CACHE_TABLE, function($table) {
+        Capsule::schema()->create(PHENIXGSM_CACHE_TABLE, function($table) {
             $table->increments("id");
             $table->string("partenaireId", 100);
             $table->text("access_token");
