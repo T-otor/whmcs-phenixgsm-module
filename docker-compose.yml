@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  phenix-api:
+    build: .
+    container_name: phenix-centralizer
+    ports:
+      - "8000:8000"
+    environment:
+      - PHENIX_BASE_URL=https://api.phenix-partner.fr
+      - PHENIX_USERNAME=${PHENIX_USERNAME}
+      - PHENIX_PASSWORD=${PHENIX_PASSWORD}
+      - PARTENAIRE_ID=${PARTENAIRE_ID}
+      - API_KEY=${API_KEY}
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8000
+      - PHENIX_TIMEOUT=30
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

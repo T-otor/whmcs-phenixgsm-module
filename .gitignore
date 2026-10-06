@@ -1,7 +1,21 @@
-*.log
-*.tmp
-*.swp
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual env
+.venv/
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
 .DS_Store
-.idea
-.vscode
-node_modules
+Thumbs.db

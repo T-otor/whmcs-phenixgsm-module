@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "phenix-centralizer"
+version = "1.0.0"
+description = "API REST pour centraliser les visualisations des forfaits GSM PHENIX - Intégration WHMCS"
+authors = ["Votre Nom <votre@email.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+httpx = "^0.27.0"
+pydantic = "^2.9.0"
+pydantic-settings = "^2.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
